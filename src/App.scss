@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Oswald', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: auto;
+  font-style: normal;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+
+  height: 100%;
+}
+
+.App {
+  h1 {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 50px;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    text-shadow: -5px 10px 4px rgb(212, 212, 212);
+  }
+  width: 800px;
+}
