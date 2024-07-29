@@ -1,11 +1,11 @@
 import './App.css'
 
-function App() {
+import { PostItem } from './components/PostItem'
+
+export const App = () => {
   return (
     <div className='App'>
-      <h1>TS</h1>
+      <PostItem />
     </div>
   )
 }
-
-export default App

@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(194, 212, 229);
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  height: 100%;
+}
+
+.App {
+  width: 800px;
+}
