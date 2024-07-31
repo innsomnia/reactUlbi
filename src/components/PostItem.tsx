@@ -1,20 +1,21 @@
-import React from 'react'
 import styles from './PostItem.module.scss'
 import { PostItemProps } from '../typeModules/modules'
 
-export const PostItem: React.FC<PostItemProps> = ({ post }) => {
+export const PostItem = ({ post }: PostItemProps) => {
+  const { id, title, body } = post
+
   return (
     <div className={styles.postContainer}>
       <div>
         <div className={styles.postBox}>
           <h2>
-            {post.id}. {post.title}
+            {id}. {title}
           </h2>
-          <p>{post.body}</p>
+          <p>{body}</p>
         </div>
       </div>
       <div>
-        <button className={styles.btnItem}>Удалить</button>
+        <button className={styles.deleteBtn}>Удалить</button>
       </div>
     </div>
   )

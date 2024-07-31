@@ -2,19 +2,23 @@
   margin: 15px;
   display: flex;
   justify-content: space-between;
-  width: 100%;
   align-items: center;
   padding: 15px;
   border: 2px solid rgb(94, 137, 94);
   border-radius: 20px;
   background-color: rgb(224, 237, 224);
   box-shadow: 5px 5px 20px rgb(186, 216, 186);
+  transition: all 0.13s ease-in-out;
+
+  &:hover {
+    box-shadow: 5px 5px 20px rgb(34, 55, 34);
+  }
 
   .postBox {
     background-color: rgb(224, 237, 224);
   }
 
-  .btnItem {
+  .deleteBtn {
     padding: 5px;
     border: 1px solid rgb(94, 137, 94);
     border-radius: 5px;
@@ -27,6 +31,7 @@
       background-color: rgb(94, 137, 94);
       color: white;
       border: 1px solid rgb(34, 55, 34);
+      box-shadow: 3px 3px 10px rgb(34, 55, 34);
     }
   }
 }
