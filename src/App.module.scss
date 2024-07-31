@@ -24,5 +24,12 @@
     margin-bottom: 40px;
     text-shadow: -5px 10px 4px rgb(181, 181, 181);
   }
-  width: 60%;
+  width: 800px;
+
+  .fromInputs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    align-items: center;
+  }
 }

@@ -7,3 +7,8 @@ interface Post {
 export interface PostItemProps {
   post: Post
 }
+
+export interface InputProps {
+  type: string
+  placeholder: string
+}
