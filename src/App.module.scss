@@ -24,6 +24,10 @@
     margin-bottom: 40px;
     text-shadow: -5px 10px 4px rgb(181, 181, 181);
   }
+  h3 {
+    display: flex;
+    justify-content: center;
+  }
   width: 800px;
 
   .fromInputs {

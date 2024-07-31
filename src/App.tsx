@@ -3,11 +3,11 @@ import styles from './App.module.scss'
 import { PostItem } from './components/PostItem'
 import { Button } from './UI/Button/Button'
 import { MyInput } from './UI/Input/MyInput'
+import { Post } from '../src/typeModules/modules'
 
 export const App = () => {
-  const [posts, setPosts] = useState([
+  const [posts, setPosts] = useState<Post[]>([
     { id: 1, title: 'JS', body: 'Язык программирования' },
-    { id: 2, title: 'CSS', body: 'Для стилизация приложения' },
   ])
 
   return (
@@ -19,9 +19,11 @@ export const App = () => {
         <Button />
       </form>
 
-      {posts.map((post) => (
-        <PostItem key={post.id} post={post} />
-      ))}
+      {posts.length > 0 ? (
+        posts.map((post) => <PostItem key={post.id} post={post} />)
+      ) : (
+        <h3>Постов не найдено</h3>
+      )}
     </div>
   )
 }
