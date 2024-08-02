@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react'
+
 export interface Post {
   id: number
   title: string
@@ -9,6 +11,8 @@ export interface PostItemProps {
 }
 
 export interface InputProps {
+  value?: string
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   type: string
   placeholder: string
 }
