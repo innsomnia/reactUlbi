@@ -16,3 +16,7 @@ export interface InputProps {
   type: string
   placeholder: string
 }
+
+export interface PostListProps {
+  posts: Post[]
+}
