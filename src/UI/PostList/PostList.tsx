@@ -2,8 +2,6 @@ import { PostItem } from '../../components/PostItem'
 import { PostListProps } from '../../typeModules/modules'
 
 export const PostList = (props: PostListProps) => {
-  console.log(props)
-
   return (
     <>
       {props.posts.length > 0 ? (

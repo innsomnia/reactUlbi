@@ -20,3 +20,9 @@ export interface InputProps {
 export interface PostListProps {
   posts: Post[]
 }
+
+export interface PostFormProps {
+  createNewPost: (newPost: Post) => void
+}
+
+export type EventCreatePost = (e: React.MouseEvent<HTMLButtonElement>) => void

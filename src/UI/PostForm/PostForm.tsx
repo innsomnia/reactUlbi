@@ -1,16 +1,25 @@
 import { ChangeEvent, useState } from 'react'
-import { Button } from '../Button/Button'
+import { PostFormProps, EventCreatePost } from '../../typeModules/modules'
 import { MyInput } from '../Input/MyInput'
 
-import styles from '../Input/MyInput.module.scss'
+import styles from './PostForm.module.scss'
 
-export const PostForm = () => {
+export const PostForm = (props: PostFormProps) => {
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
 
+  const { createNewPost } = props
+
+  const createPost: EventCreatePost = (e) => {
+    e.preventDefault()
+    const newPost = { id: Date.now(), title, body }
+    createNewPost(newPost)
+    setTitle('')
+    setBody('')
+  }
+
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
-    console.log(title)
   }
 
   const handleBodyChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -34,8 +43,9 @@ export const PostForm = () => {
           type='text'
           placeholder='Введи описание...'
         />
-
-        <Button />
+        <button onClick={createPost} className={styles.createBtn}>
+          Создать пост
+        </button>
       </form>
     </div>
   )
