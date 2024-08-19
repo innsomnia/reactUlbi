@@ -1,17 +1,22 @@
 import styles from './PostItem.module.scss'
-import { PostItemProps } from '../typeModules/modules'
+import { Post } from '../typeModules/modules'
 
-export const PostItem = ({ post }: PostItemProps) => {
-  const { id, title, body } = post
+interface PostItemProps {
+  post: Post
+  idNumber: number
+}
+
+export const PostItem = ({ post, idNumber }: PostItemProps) => {
+  const { postTitle, postBody } = post
 
   return (
     <div className={styles.postContainer}>
       <div>
         <div className={styles.postBox}>
           <h2>
-            {id}. {title}
+            {idNumber}. {postTitle}
           </h2>
-          <p>{body}</p>
+          <p>{postBody}</p>
         </div>
       </div>
       <div>

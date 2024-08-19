@@ -1,14 +1,20 @@
 import { PostItem } from '../../components/PostItem'
-import { PostListProps } from '../../typeModules/modules'
+import { Post } from '../../typeModules/modules'
+
+interface PostListProps {
+  posts: Post[]
+}
 
 export const PostList = (props: PostListProps) => {
   return (
-    <>
+    <div>
       {props.posts.length > 0 ? (
-        props.posts.map((post) => <PostItem key={post.id} post={post} />)
+        props.posts.map((post, index) => (
+          <PostItem idNumber={index + 1} key={post.id} post={post} />
+        ))
       ) : (
         <h3>Постов не найдено</h3>
       )}
-    </>
+    </div>
   )
 }
