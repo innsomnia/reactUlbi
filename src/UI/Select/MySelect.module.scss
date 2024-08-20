@@ -1,0 +1,18 @@
+.selectContainer {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px;
+}
+
+.sectionSelect {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(224, 237, 224);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.sectionSelect:focus {
+  border: 1px solid rgb(94, 137, 94);
+  outline: none;
+}

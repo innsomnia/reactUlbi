@@ -6,6 +6,11 @@ export interface Post {
   postBody: string
 }
 
+export interface Option {
+  value: string
+  name: string
+}
+
 export interface InputProps {
   value?: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
