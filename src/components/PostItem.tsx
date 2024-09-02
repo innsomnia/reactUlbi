@@ -4,9 +4,10 @@ import { Post } from '../typeModules/modules'
 interface PostItemProps {
   post: Post
   idNumber: number
+  removePost: () => void
 }
 
-export const PostItem = ({ post, idNumber }: PostItemProps) => {
+export const PostItem = ({ post, idNumber, removePost }: PostItemProps) => {
   const { postTitle, postBody } = post
 
   return (
@@ -20,7 +21,9 @@ export const PostItem = ({ post, idNumber }: PostItemProps) => {
         </div>
       </div>
       <div>
-        <button className={styles.deleteBtn}>Удалить</button>
+        <button onClick={removePost} className={styles.deleteBtn}>
+          Удалить
+        </button>
       </div>
     </div>
   )

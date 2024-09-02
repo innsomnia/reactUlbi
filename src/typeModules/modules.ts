@@ -1,5 +1,3 @@
-import { ChangeEvent } from 'react'
-
 export interface Post {
   id: number
   postTitle: string
@@ -9,13 +7,6 @@ export interface Post {
 export interface Option {
   value: string
   name: string
-}
-
-export interface InputProps {
-  value?: string
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
-  type: string
-  placeholder: string
 }
 
 export interface PostFormProps {

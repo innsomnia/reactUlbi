@@ -13,12 +13,13 @@ export const App = () => {
     { id: 3, postTitle: 'HTML', postBody: 'Язык программирования' },
   ])
 
-  const addNewPost = useCallback(
-    (newPost: Post) => {
-      setPosts([...posts, newPost])
-    },
-    [posts]
-  )
+  const addNewPost = useCallback((newPost: Post) => {
+    setPosts((prev) => [...prev, newPost])
+  }, [])
+
+  const removePost = useCallback((id: number) => {
+    setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id))
+  }, [])
 
   return (
     <div className={styles.appContainer}>
@@ -31,7 +32,7 @@ export const App = () => {
           { value: 'postBody', name: 'По описанию' },
         ]}
       />
-      <PostList posts={posts} />
+      <PostList posts={posts} removePost={removePost} />
     </div>
   )
 }
