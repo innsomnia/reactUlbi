@@ -1,13 +1,15 @@
 import styles from './PostItem.module.scss'
 import { Post } from '../typeModules/modules'
+import { ContextForPosts } from '../App'
+import { useContext } from 'react'
 
 interface PostItemProps {
   post: Post
   idNumber: number
-  removePost: () => void
 }
 
-export const PostItem = ({ post, idNumber, removePost }: PostItemProps) => {
+export const PostItem = ({ post, idNumber }: PostItemProps) => {
+  const { removePost } = useContext(ContextForPosts)
   const { postTitle, postBody } = post
 
   return (
@@ -21,7 +23,7 @@ export const PostItem = ({ post, idNumber, removePost }: PostItemProps) => {
         </div>
       </div>
       <div>
-        <button onClick={removePost} className={styles.deleteBtn}>
+        <button onClick={() => removePost(post.id)} className={styles.deleteBtn}>
           Удалить
         </button>
       </div>

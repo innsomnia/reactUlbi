@@ -1,10 +1,18 @@
 import { useCallback, useState } from 'react'
+import { createContext } from 'react'
 import styles from './App.module.scss'
 import { Post } from './typeModules/modules'
-
 import { PostForm } from './UI/PostForm/PostForm'
 import { PostList } from './UI/PostList/PostList'
 import { MySelect } from './UI/Select/MySelect'
+
+interface ContextType {
+  removePost: (id: number) => void
+}
+
+export const ContextForPosts = createContext<ContextType>({
+  removePost: () => {},
+})
 
 export const App = () => {
   const [posts, setPosts] = useState([
@@ -32,7 +40,9 @@ export const App = () => {
           { value: 'postBody', name: 'По описанию' },
         ]}
       />
-      <PostList posts={posts} removePost={removePost} />
+      <ContextForPosts.Provider value={{ removePost }}>
+        <PostList posts={posts} />
+      </ContextForPosts.Provider>
     </div>
   )
 }
