@@ -16,10 +16,11 @@ export const ContextForPosts = createContext<ContextType>({
 
 export const App = () => {
   const [posts, setPosts] = useState([
-    { id: 1, postTitle: 'JS', postBody: 'Язык программирования' },
-    { id: 2, postTitle: 'Python', postBody: 'Язык программирования' },
-    { id: 3, postTitle: 'HTML', postBody: 'Язык программирования' },
+    { id: 1, postTitle: 'JS', postBody: 'ААА' },
+    { id: 2, postTitle: 'Python', postBody: 'БББ' },
+    { id: 3, postTitle: 'HTML', postBody: 'ЯЯЯ' },
   ])
+  const [selectedSort, setSelectedSort] = useState('')
 
   const addNewPost = useCallback((newPost: Post) => {
     setPosts((prev) => [...prev, newPost])
@@ -29,11 +30,26 @@ export const App = () => {
     setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id))
   }, [])
 
+  const sortPosts = (sort: keyof Post) => {
+    setSelectedSort(sort)
+
+    setPosts(
+      [...posts].sort((a, b) => {
+        if (typeof a[sort] === 'string' && typeof b[sort] === 'string') {
+          return (a[sort] as string).localeCompare(b[sort] as string)
+        }
+        return 0
+      })
+    )
+  }
+
   return (
     <div className={styles.appContainer}>
       <PostForm addNewPost={addNewPost} />
       <hr className={styles.line} />
       <MySelect
+        value={selectedSort}
+        onChange={sortPosts}
         defaultValue={'Сортировка по:'}
         options={[
           { value: 'postTitle', name: 'По названию' },
