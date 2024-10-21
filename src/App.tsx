@@ -4,6 +4,7 @@ import styles from './App.module.scss'
 import { Post } from './typeModules/modules'
 import { PostForm } from './UI/PostForm/PostForm'
 import { PostList } from './UI/PostList/PostList'
+import { SearchInput } from './UI/SearchInput/SearchInput'
 import { MySelect } from './UI/Select/MySelect'
 
 interface ContextType {
@@ -47,15 +48,18 @@ export const App = () => {
     <div className={styles.appContainer}>
       <PostForm addNewPost={addNewPost} />
       <hr className={styles.line} />
-      <MySelect
-        value={selectedSort}
-        onChange={sortPosts}
-        defaultValue={'Сортировка по:'}
-        options={[
-          { value: 'postTitle', name: 'По названию' },
-          { value: 'postBody', name: 'По описанию' },
-        ]}
-      />
+      <div className={styles.searchContainer}>
+        <MySelect
+          value={selectedSort}
+          onChange={sortPosts}
+          defaultValue={'Сортировка по:'}
+          options={[
+            { value: 'postTitle', name: 'По названию' },
+            { value: 'postBody', name: 'По описанию' },
+          ]}
+        />
+        <SearchInput />
+      </div>
       <ContextForPosts.Provider value={{ removePost }}>
         <PostList posts={posts} />
       </ContextForPosts.Provider>

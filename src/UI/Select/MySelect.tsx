@@ -11,7 +11,7 @@ interface SelectOptions {
 
 export const MySelect = ({ options, defaultValue, value, onChange }: SelectOptions) => {
   return (
-    <div className={styles.selectContainer}>
+    <div>
       <select
         className={styles.sectionSelect}
         value={value}
