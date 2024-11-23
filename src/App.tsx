@@ -1,4 +1,3 @@
-import { type } from 'os'
 import { useCallback, useState } from 'react'
 import { createContext } from 'react'
 import styles from './App.module.scss'
