@@ -1,3 +1,4 @@
+import { type } from 'os'
 import { useCallback, useState } from 'react'
 import { createContext } from 'react'
 import styles from './App.module.scss'
@@ -44,15 +45,9 @@ export const App = () => {
     setSearchPosts(sortedPosts)
   }
 
-  const onSearch = (searchingWords: string) => {
-    if (searchingWords.trim() === '') {
-      setSearchPosts(posts)
-    } else {
-      const searchedPosts = posts.filter((post) =>
-        post.postTitle.toLocaleLowerCase().includes(searchingWords.toLocaleLowerCase())
-      )
-      setSearchPosts(searchedPosts)
-    }
+  const onSearch = (searchValue: string) => {
+    const filtered = posts.filter((post) => post.postTitle.toLocaleLowerCase().includes(searchValue))
+    setSearchPosts(filtered)
   }
 
   return (
