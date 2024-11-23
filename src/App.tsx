@@ -22,6 +22,7 @@ export const App = () => {
     { id: 3, postTitle: 'HTML', postBody: 'ЯЯЯ' },
   ])
   const [selectedSort, setSelectedSort] = useState('')
+  const [searchPosts, setSearchPosts] = useState('')
 
   const addNewPost = useCallback((newPost: Post) => {
     setPosts((prev) => [...prev, newPost])
@@ -33,7 +34,6 @@ export const App = () => {
 
   const sortPosts = (sort: keyof Post) => {
     setSelectedSort(sort)
-
     setPosts(
       [...posts].sort((a, b) => {
         if (typeof a[sort] === 'string' && typeof b[sort] === 'string') {
@@ -42,6 +42,15 @@ export const App = () => {
         return 0
       })
     )
+  }
+
+  const onSearch = (searchingWords: string) => {
+    console.log(searchingWords, 123123123)
+    setSearchPosts(searchingWords)
+    const filteredPosts = posts.filter((post) =>
+      post.postTitle.toLocaleLowerCase().includes(searchPosts.toLocaleLowerCase())
+    )
+    setPosts(filteredPosts)
   }
 
   return (
@@ -58,7 +67,7 @@ export const App = () => {
             { value: 'postBody', name: 'По описанию' },
           ]}
         />
-        <SearchInput />
+        <SearchInput onChange={onSearch} />
       </div>
       <ContextForPosts.Provider value={{ removePost }}>
         <PostList posts={posts} />
