@@ -22,10 +22,11 @@ export const App = () => {
     { id: 3, postTitle: 'HTML', postBody: 'ЯЯЯ' },
   ])
   const [selectedSort, setSelectedSort] = useState('')
-  const [searchPosts, setSearchPosts] = useState('')
+  const [searchPosts, setSearchPosts] = useState(posts)
 
   const addNewPost = useCallback((newPost: Post) => {
     setPosts((prev) => [...prev, newPost])
+    setSearchPosts((prev) => [...prev, newPost])
   }, [])
 
   const removePost = useCallback((id: number) => {
@@ -34,23 +35,24 @@ export const App = () => {
 
   const sortPosts = (sort: keyof Post) => {
     setSelectedSort(sort)
-    setPosts(
-      [...posts].sort((a, b) => {
-        if (typeof a[sort] === 'string' && typeof b[sort] === 'string') {
-          return (a[sort] as string).localeCompare(b[sort] as string)
-        }
-        return 0
-      })
-    )
+    const sortedPosts = [...searchPosts].sort((a, b) => {
+      if (typeof a[sort] === 'string' && typeof b[sort] === 'string') {
+        return (a[sort] as string).localeCompare(b[sort] as string)
+      }
+      return 0
+    })
+    setSearchPosts(sortedPosts)
   }
 
   const onSearch = (searchingWords: string) => {
-    console.log(searchingWords, 123123123)
-    setSearchPosts(searchingWords)
-    const filteredPosts = posts.filter((post) =>
-      post.postTitle.toLocaleLowerCase().includes(searchPosts.toLocaleLowerCase())
-    )
-    setPosts(filteredPosts)
+    if (searchingWords.trim() === '') {
+      setSearchPosts(posts)
+    } else {
+      const searchedPosts = posts.filter((post) =>
+        post.postTitle.toLocaleLowerCase().includes(searchingWords.toLocaleLowerCase())
+      )
+      setSearchPosts(searchedPosts)
+    }
   }
 
   return (
@@ -70,7 +72,7 @@ export const App = () => {
         <SearchInput onChange={onSearch} />
       </div>
       <ContextForPosts.Provider value={{ removePost }}>
-        <PostList posts={posts} />
+        <PostList posts={searchPosts} />
       </ContextForPosts.Provider>
     </div>
   )
