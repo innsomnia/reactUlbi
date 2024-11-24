@@ -2,10 +2,9 @@ import { useCallback, useState } from 'react'
 import { createContext } from 'react'
 import styles from './App.module.scss'
 import { Post } from './typeModules/modules'
+import { PostFilter } from './UI/PostFilter/PostFilter'
 import { PostForm } from './UI/PostForm/PostForm'
 import { PostList } from './UI/PostList/PostList'
-import { SearchInput } from './UI/SearchInput/SearchInput'
-import { MySelect } from './UI/Select/MySelect'
 
 interface ContextType {
   removePost: (id: number) => void
@@ -45,7 +44,7 @@ export const App = () => {
   }
 
   const onSearch = (searchValue: string) => {
-    const filtered = posts.filter((post) => post.postTitle.toLocaleLowerCase().includes(searchValue))
+    const filtered = posts.filter((post) => post.postTitle.toLowerCase().includes(searchValue))
     setSearchPosts(filtered)
   }
 
@@ -53,18 +52,7 @@ export const App = () => {
     <div className={styles.appContainer}>
       <PostForm addNewPost={addNewPost} />
       <hr className={styles.line} />
-      <div className={styles.searchContainer}>
-        <MySelect
-          value={selectedSort}
-          onChange={sortPosts}
-          defaultValue={'Сортировка по:'}
-          options={[
-            { value: 'postTitle', name: 'По названию' },
-            { value: 'postBody', name: 'По описанию' },
-          ]}
-        />
-        <SearchInput onChange={onSearch} />
-      </div>
+      <PostFilter selectedSort={selectedSort} sortPosts={sortPosts} onSearch={onSearch} />
       <ContextForPosts.Provider value={{ removePost }}>
         <PostList posts={searchPosts} />
       </ContextForPosts.Provider>
