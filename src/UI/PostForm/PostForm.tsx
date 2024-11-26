@@ -30,23 +30,12 @@ export const PostForm = memo(({ addNewPost }: PostFormProps) => {
 
   return (
     <div>
-      <h1>Мои посты</h1>
       <form className={styles.formInputs}>
-        <MyInput
-          value={postTitle}
-          onChange={handleTitleChange}
-          type='text'
-          placeholder='Введи заголовок...'
-        />
+        <MyInput value={postTitle} onChange={handleTitleChange} type='text' placeholder='Введи заголовок...' />
 
-        <MyInput
-          value={postBody}
-          onChange={handleBodyChange}
-          type='text'
-          placeholder='Введи описание...'
-        />
+        <MyInput value={postBody} onChange={handleBodyChange} type='text' placeholder='Введи описание...' />
         <button onClick={handlePostCreation} className={styles.createBtn}>
-          Создать пост
+          Создать
         </button>
       </form>
     </div>

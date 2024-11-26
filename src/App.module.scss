@@ -35,7 +35,8 @@
     background: linear-gradient(to right, rgb(94, 137, 94, 0.1), rgb(94, 137, 94), rgb(94, 137, 94, 0.1));
     height: 3px;
   }
-  width: 800px;
+  width: 100%;
+  height: 100%;
 }
 
 .searchContainer {
@@ -44,4 +45,22 @@
   margin: 20px;
 
   align-items: center;
+}
+
+.createBtn {
+  height: 37px;
+  border: 1px solid rgb(94, 137, 94);
+  border-radius: 10px;
+  width: 100px;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.1s ease-in-out;
+  margin-left: 16px;
+
+  &:hover {
+    background-color: rgb(94, 137, 94);
+    color: white;
+    border: 1px solid rgb(34, 55, 34);
+    box-shadow: 3px 3px 10px rgb(34, 55, 34);
+  }
 }
