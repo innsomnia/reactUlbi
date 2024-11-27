@@ -58,12 +58,10 @@ export const App = () => {
       <button className={styles.createBtn} onClick={() => setModal(true)}>
         Создать пост
       </button>
-      {modal ? (
+      {modal && (
         <MyModal>
           <PostForm addNewPost={addNewPost} />
         </MyModal>
-      ) : (
-        ''
       )}
       <hr className={styles.line} />
       <PostFilter selectedSort={selectedSort} sortPosts={sortPosts} onSearch={onSearch} />
