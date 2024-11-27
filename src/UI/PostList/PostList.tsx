@@ -7,7 +7,6 @@ interface PostListProps {
 }
 
 export const PostList = memo((props: PostListProps) => {
-  console.log(props, 'пропсы в постлисте')
   return (
     <div>
       {props.posts.length > 0 ? (

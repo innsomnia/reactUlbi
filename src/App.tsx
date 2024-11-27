@@ -1,5 +1,7 @@
-import { useCallback, useState } from 'react'
+import axios from 'axios'
+import { useCallback, useEffect, useState } from 'react'
 import { createContext } from 'react'
+import PostService from './API/postService'
 import styles from './App.module.scss'
 import { Post } from './typeModules/modules'
 import { MyModal } from './UI/Modal/Modal'
@@ -16,14 +18,20 @@ export const ContextForPosts = createContext<ContextType>({
 })
 
 export const App = () => {
-  const [posts, setPosts] = useState([
-    { id: 1, postTitle: 'JS', postBody: 'ААА' },
-    { id: 2, postTitle: 'Python', postBody: 'БББ' },
-    { id: 3, postTitle: 'HTML', postBody: 'ЯЯЯ' },
-  ])
+  const [posts, setPosts] = useState<Post[]>([])
   const [selectedSort, setSelectedSort] = useState('')
   const [searchPosts, setSearchPosts] = useState(posts)
   const [modal, setModal] = useState(false)
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
+
+  const fetchPosts = async () => {
+    const posts = await PostService.getAll()
+    setPosts(posts)
+    setSearchPosts(posts)
+  }
 
   const addNewPost = useCallback((newPost: Post) => {
     setPosts((prev) => [...prev, newPost])
@@ -48,13 +56,14 @@ export const App = () => {
   }
 
   const onSearch = (searchValue: string) => {
-    const filtered = posts.filter((post) => post.postTitle.toLowerCase().includes(searchValue))
+    const filtered = posts.filter((post) => post.title.toLowerCase().includes(searchValue))
     setSearchPosts(filtered)
   }
 
   return (
     <div className={styles.appContainer}>
       <h1>Мои посты</h1>
+
       <button className={styles.createBtn} onClick={() => setModal(true)}>
         Создать пост
       </button>

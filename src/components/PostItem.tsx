@@ -10,16 +10,16 @@ interface PostItemProps {
 
 export const PostItem = ({ post, idNumber }: PostItemProps) => {
   const { removePost } = useContext(ContextForPosts)
-  const { postTitle, postBody } = post
+  const { title, body } = post
 
   return (
     <div className={styles.postContainer}>
       <div>
         <div className={styles.postBox}>
           <h2>
-            {idNumber}. {postTitle}
+            {idNumber}. {title}
           </h2>
-          <p>{postBody}</p>
+          <p>{body}</p>
         </div>
       </div>
       <div>

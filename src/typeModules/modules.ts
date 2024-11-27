@@ -1,7 +1,7 @@
 export interface Post {
   id: number
-  postTitle: string
-  postBody: string
+  title: string
+  body: string
 }
 
 export interface Option {
