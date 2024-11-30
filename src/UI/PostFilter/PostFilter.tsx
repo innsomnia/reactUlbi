@@ -18,8 +18,8 @@ export const PostFilter = (propsOfFilter: filterProps) => {
         onChange={sortPosts}
         defaultValue={'Сортировка по:'}
         options={[
-          { value: 'postTitle', name: 'По названию' },
-          { value: 'postBody', name: 'По описанию' },
+          { value: 'title', name: 'По названию' },
+          { value: 'body', name: 'По описанию' },
         ]}
       />
       <SearchInput onChange={onSearch} />
