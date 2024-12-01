@@ -1,9 +1,10 @@
 .modalContent {
+  position: sticky;
+  top: 10px;
   padding: 25px;
   background-color: white;
   border-radius: 15px;
   min-width: 300px;
-  position: absolute;
   box-shadow: 0px 9px 19px 15px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
@@ -14,5 +15,5 @@
 .modalBackground.active {
   display: flex;
   justify-content: center;
-  align-items: center;
+  position: relative;
 }

@@ -78,7 +78,7 @@ export const App = () => {
       </button>
       {modal && (
         <MyModal>
-          <PostForm addNewPost={addNewPost} />
+          <PostForm setModal={() => setModal(false)} addNewPost={addNewPost} />
         </MyModal>
       )}
       <hr className={styles.line} />
