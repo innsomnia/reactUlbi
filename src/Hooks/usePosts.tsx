@@ -1,10 +1,12 @@
 import { useQuery } from '@tanstack/react-query'
-// import PostService from '../API/postService'
 import axios from 'axios'
 import { useState } from 'react'
+import { Loader } from '../UI/Loader/Loader'
 
 const postService = async (page = 0) => {
-  const response = await axios.get(`https://jsonplaceholder.typicode.com/posts?_page=${page + 1}&_limit=10`)
+  const limit = 10
+
+  const response = await axios.get(`https://jsonplaceholder.typicode.com/posts?_page=${page + 1}&_limit=${limit}`)
 
   return response.data
 }
@@ -16,7 +18,31 @@ export const UsePosts = () => {
     isLoading,
     isError,
     error,
-  } = useQuery({ queryKey: ['posts', page], queryFn: () => postService(page), retry: false })
-  console.log(page, 'page в usePosts')
-  return { posts, isLoading, isError, error }
+  } = useQuery({
+    queryKey: ['posts', page],
+    queryFn: () => postService(page),
+    placeholderData: true,
+    retry: false,
+  })
+
+  const nextPage = () => {
+    setPage((prev) => prev + 1)
+  }
+
+  const prevPage = () => {
+    setPage((prev) => (prev > 0 ? prev - 1 : 0))
+  }
+
+  const LoaderComponent = isLoading ? <Loader /> : null
+
+  const ErrorComponent =
+    isError && axios.isAxiosError(error) ? (
+      <div>
+        <h2>Произошла ошибка!</h2>
+        <p>Текст ошибки: {error.message}</p>
+        <p>Код ошибки: {error.response?.status}</p>
+      </div>
+    ) : null
+
+  return { posts, LoaderComponent, ErrorComponent, page, nextPage, prevPage }
 }

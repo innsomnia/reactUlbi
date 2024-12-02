@@ -2,13 +2,11 @@ import { useCallback, useEffect, useState } from 'react'
 import { createContext } from 'react'
 import styles from './App.module.scss'
 import { Post } from './typeModules/modules'
-import { Loader } from './UI/Loader/Loader'
 import { MyModal } from './UI/Modal/Modal'
 import { PostFilter } from './UI/PostFilter/PostFilter'
 import { PostForm } from './UI/PostForm/PostForm'
 import { PostList } from './UI/PostList/PostList'
-import { UsePosts } from './Hooks/usePosts'
-import axios from 'axios'
+import { UsePosts } from './Hooks/UsePosts'
 
 interface ContextType {
   removePost: (id: number) => void
@@ -19,7 +17,7 @@ export const ContextForPosts = createContext<ContextType>({
 })
 
 export const App = () => {
-  const { posts, isLoading, isError, error } = UsePosts()
+  const { posts, LoaderComponent, ErrorComponent, page, nextPage, prevPage } = UsePosts()
   const [selectedSort, setSelectedSort] = useState('')
   const [searchPosts, setSearchPosts] = useState(posts)
   const [modal, setModal] = useState(false)
@@ -54,19 +52,8 @@ export const App = () => {
     setSearchPosts(filtered)
   }
 
-  if (isLoading) {
-    return <Loader />
-  }
-  if (isError) {
-    if (axios.isAxiosError(error)) {
-      return (
-        <div>
-          <h2>Произошла ошибка!</h2>
-          <p>Текст ошибки: {error.message}</p>
-          <p>Код ошибки: {error.response?.status}</p>
-        </div>
-      )
-    }
+  if (LoaderComponent || ErrorComponent) {
+    return LoaderComponent || ErrorComponent
   }
 
   return (
@@ -83,9 +70,15 @@ export const App = () => {
       )}
       <hr className={styles.line} />
       <PostFilter selectedSort={selectedSort} sortPosts={sortPosts} onSearch={onSearch} />
+
       <ContextForPosts.Provider value={{ removePost }}>
         <PostList posts={searchPosts} />
       </ContextForPosts.Provider>
+
+      <button onClick={prevPage}>Предыдущая</button>
+      <button onClick={nextPage}>Следующая</button>
+
+      <span>Страница: {page + 1}</span>
     </div>
   )
 }
