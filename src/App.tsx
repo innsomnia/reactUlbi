@@ -75,10 +75,15 @@ export const App = () => {
         <PostList posts={searchPosts} />
       </ContextForPosts.Provider>
 
-      <button onClick={prevPage}>Предыдущая</button>
-      <button onClick={nextPage}>Следующая</button>
-
-      <span>Страница: {page + 1}</span>
+      <div className={styles.pagesBtn}>
+        <button className={styles.button} onClick={prevPage}>
+          Предыдущая
+        </button>
+        <button className={styles.button} onClick={nextPage}>
+          Следующая
+        </button>
+        <span className={styles.numberPage}>Страница: {page + 1}</span>
+      </div>
     </div>
   )
 }
