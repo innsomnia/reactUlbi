@@ -71,10 +71,6 @@ export const App = () => {
       <hr className={styles.line} />
       <PostFilter selectedSort={selectedSort} sortPosts={sortPosts} onSearch={onSearch} />
 
-      <ContextForPosts.Provider value={{ removePost }}>
-        <PostList posts={searchPosts} />
-      </ContextForPosts.Provider>
-
       <div className={styles.pagesBtn}>
         <button className={styles.button} onClick={prevPage}>
           Предыдущая
@@ -84,6 +80,10 @@ export const App = () => {
         </button>
         <span className={styles.numberPage}>Страница: {page + 1}</span>
       </div>
+
+      <ContextForPosts.Provider value={{ removePost }}>
+        <PostList posts={searchPosts} />
+      </ContextForPosts.Provider>
     </div>
   )
 }
