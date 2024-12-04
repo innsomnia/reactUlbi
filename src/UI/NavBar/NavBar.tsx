@@ -1,29 +1,22 @@
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styles from './NavBar.module.scss'
-import { StylesLinkType } from '../../typeModules/modules'
 
-const getLinkStyles = ({ isActive }: StylesLinkType, styles) => {
-  return isActive ? `${styles.link} ${styles.active}` : styles.link
-}
+// const getLinkStyles = ({ isActive }: StylesLinkType, styles: Record<string, string>) => {
+//   return isActive ? `${styles.link} ${styles.active}` : styles.link
+// }
 
 export const NavBar = () => {
   return (
     <nav className={styles.navBar}>
       <ul className={styles.navBarLinks}>
-        <li>
-          <NavLink className={({ isActive }: StylesLinkType) => getLinkStyles({ isActive }, styles)} to={'/'}>
-            Главная
-          </NavLink>
+        <li className={styles.navBarLink}>
+          <Link to={'/'}>Главная</Link>
         </li>
-        <li>
-          <NavLink className={({ isActive }: StylesLinkType) => getLinkStyles({ isActive }, styles)} to={'/posts'}>
-            Список постов
-          </NavLink>
+        <li className={styles.navBarLink}>
+          <Link to={'/posts'}>Список постов</Link>
         </li>
-        <li>
-          <NavLink className={({ isActive }: StylesLinkType) => getLinkStyles({ isActive }, styles)} to={'/about'}>
-            О нас
-          </NavLink>
+        <li className={styles.navBarLink}>
+          <Link to={'/about'}>О нас</Link>
         </li>
       </ul>
     </nav>

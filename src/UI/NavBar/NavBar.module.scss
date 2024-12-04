@@ -22,7 +22,7 @@
       text-decoration: none;
       font-size: 18px;
       color: #333;
-      transition: background-color 0.3 ease-in-out, color 0.3s ease-in-out;
+      transition: background-color 0.3 ease-in-out, color 0.7s ease-in-out;
 
       &:hover {
         color: #006400;
@@ -32,11 +32,11 @@
         background-color: rgba(0, 100, 0, 0.1);
       }
 
-      .navBarLinks {
+      &:active {
         background-color: rgba(0, 100, 0, 0.1);
         color: white;
 
-        &:hover {
+        a {
           color: white;
         }
       }
