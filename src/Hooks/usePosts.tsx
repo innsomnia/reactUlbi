@@ -21,7 +21,7 @@ export const UsePosts = () => {
   } = useQuery({
     queryKey: ['posts', page],
     queryFn: () => postService(page),
-    placeholderData: true,
+    placeholderData: [],
     retry: false,
   })
 

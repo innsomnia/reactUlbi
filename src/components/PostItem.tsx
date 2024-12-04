@@ -1,14 +1,13 @@
 import styles from './PostItem.module.scss'
 import { Post } from '../typeModules/modules'
-import { ContextForPosts } from '../App'
+import { ContextForPosts } from '../Pages/Posts'
 import { useContext } from 'react'
 
 interface PostItemProps {
   post: Post
-  idNumber: number
 }
 
-export const PostItem = ({ post, idNumber }: PostItemProps) => {
+export const PostItem = ({ post }: PostItemProps) => {
   const { removePost } = useContext(ContextForPosts)
   const { title, body } = post
 
@@ -17,7 +16,7 @@ export const PostItem = ({ post, idNumber }: PostItemProps) => {
       <div>
         <div className={styles.postBox}>
           <h2>
-            {idNumber}. {title}
+            {post.id}. {title}
           </h2>
           <p>{body}</p>
         </div>

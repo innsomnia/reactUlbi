@@ -8,10 +8,11 @@ interface PostListProps {
 
 export const PostList = memo(({ posts }: PostListProps) => {
   const [message, setMessage] = useState('')
+  console.log(posts, 'посты в постлисте')
 
   useEffect(() => {
     if (posts.length === 0) {
-      const timer = setTimeout(() => setMessage('Посты не найдены'), 600)
+      const timer = setTimeout(() => setMessage('Посты не найдены'), 1000)
       return () => clearTimeout(timer)
     }
     setMessage('')
@@ -20,8 +21,8 @@ export const PostList = memo(({ posts }: PostListProps) => {
   if (posts.length > 0) {
     return (
       <div>
-        {posts.map((post, index) => (
-          <PostItem idNumber={index + 1} key={post.id} post={post} />
+        {posts.map((post) => (
+          <PostItem key={post.id} post={post} />
         ))}
       </div>
     )
