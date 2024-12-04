@@ -3,10 +3,12 @@ import { Posts } from './Pages/Posts'
 import { About } from './Pages/About'
 import { HomePage } from './Pages/HomePage'
 import styles from './App.module.scss'
+import { NavBar } from './UI/NavBar/NavBar'
 
 export const App = () => {
   return (
     <div className={styles.mainInfo}>
+      <NavBar />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/about' element={<About />} />
