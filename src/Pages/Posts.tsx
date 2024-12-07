@@ -6,6 +6,9 @@ import { PostFilter } from '../UI/PostFilter/PostFilter'
 import { PostList } from '../UI/PostList/PostList'
 import { PostForm } from '../UI/PostForm/PostForm'
 import { UsePosts } from '../Hooks/UsePosts'
+import { isError } from 'util'
+import { Loader } from '../UI/Loader/Loader'
+import { NotFound } from './NotFound/NotFound'
 
 interface ContextType {
   removePost: (id: number) => void
@@ -16,17 +19,20 @@ export const ContextForPosts = createContext<ContextType>({
 })
 
 export const Posts = () => {
-  const { posts, LoaderComponent, ErrorComponent, page, nextPage, prevPage } = UsePosts()
+  const [page, setPage] = useState(0)
+  const { data: posts, isLoading } = UsePosts(page)
   const [selectedSort, setSelectedSort] = useState('')
-  const [searchPosts, setSearchPosts] = useState(posts)
+  const [searchPosts, setSearchPosts] = useState(posts || [])
   const [modal, setModal] = useState(false)
 
   useEffect(() => {
-    setSearchPosts(posts)
+    if (posts) {
+      setSearchPosts(posts)
+    }
   }, [posts])
 
   const addNewPost = useCallback((newPost: Post) => {
-    setSearchPosts((prev: Post[]) => [...prev, newPost])
+    setSearchPosts((prev) => [...prev, newPost])
     setModal(false)
   }, [])
 
@@ -47,12 +53,19 @@ export const Posts = () => {
   }
 
   const onSearch = (searchValue: string) => {
-    const filtered = posts.filter((post: Post) => post.title.toLowerCase().includes(searchValue))
-    setSearchPosts(filtered)
+    const filtered = posts?.filter((post: Post) => post.title.toLowerCase().includes(searchValue))
+
+    if (filtered) {
+      setSearchPosts(filtered)
+    }
   }
 
-  if (LoaderComponent || ErrorComponent) {
-    return LoaderComponent || ErrorComponent
+  const nextPage = () => {
+    setPage((prev) => prev + 1)
+  }
+
+  const prevPage = () => {
+    setPage(page > 0 ? (prev) => prev - 1 : 0)
   }
 
   return (
@@ -68,6 +81,7 @@ export const Posts = () => {
         </MyModal>
       )}
       <hr className={styles.line} />
+
       <PostFilter selectedSort={selectedSort} sortPosts={sortPosts} onSearch={onSearch} />
 
       <div className={styles.pagesBtn}>
@@ -81,7 +95,7 @@ export const Posts = () => {
       </div>
 
       <ContextForPosts.Provider value={{ removePost }}>
-        <PostList posts={searchPosts} />
+        {isLoading ? <Loader /> : <PostList posts={searchPosts} />}
       </ContextForPosts.Provider>
     </div>
   )
