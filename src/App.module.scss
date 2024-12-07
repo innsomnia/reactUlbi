@@ -87,6 +87,19 @@
       border: 1px solid rgb(34, 55, 34);
       box-shadow: 3px 3px 10px rgb(34, 55, 34);
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: rgb(240, 240, 240);
+      color: rgb(150, 150, 150);
+      border: 1px solid rgb(200, 200, 200);
+    }
+
+    &:disabled:hover {
+      background-color: rgb(240, 240, 240);
+      color: rgb(150, 150, 150);
+      box-shadow: none;
+    }
   }
 
   .numberPage {

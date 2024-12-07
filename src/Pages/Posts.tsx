@@ -25,6 +25,8 @@ export const Posts = () => {
   const [searchPosts, setSearchPosts] = useState(posts || [])
   const [modal, setModal] = useState(false)
 
+  console.log(page, 'номер страницы')
+
   useEffect(() => {
     if (posts) {
       setSearchPosts(posts)
@@ -88,7 +90,7 @@ export const Posts = () => {
         <button className={styles.button} onClick={prevPage}>
           Предыдущая
         </button>
-        <button className={styles.button} onClick={nextPage}>
+        <button className={styles.button} onClick={nextPage} disabled={page === 9}>
           Следующая
         </button>
         <span className={styles.numberPage}>Страница: {page + 1}</span>
