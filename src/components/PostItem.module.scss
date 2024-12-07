@@ -13,25 +13,37 @@
   &:hover {
     box-shadow: 5px 5px 20px rgb(34, 55, 34);
   }
+}
 
-  .postBox {
-    background-color: rgb(224, 237, 224);
-  }
+.postText {
+  flex: 1;
+  margin-right: 10px;
+}
 
-  .deleteBtn {
-    padding: 5px;
-    border: 1px solid rgb(94, 137, 94);
-    border-radius: 5px;
-    width: 100px;
-    cursor: pointer;
-    background-color: rgb(255, 255, 255);
-    transition: all 0.15s ease-in-out;
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+}
 
-    &:hover {
-      background-color: rgb(94, 137, 94);
-      color: white;
-      border: 1px solid rgb(34, 55, 34);
-      box-shadow: 3px 3px 10px rgb(34, 55, 34);
-    }
-  }
+.postBox {
+  background-color: rgb(224, 237, 224);
+}
+
+.openBtn,
+.deleteBtn {
+  padding: 5px;
+  border: 1px solid rgb(94, 137, 94);
+  border-radius: 5px;
+  width: 100px;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.15s ease-in-out;
+}
+
+.openBtn:hover,
+.deleteBtn:hover {
+  background-color: rgb(94, 137, 94);
+  color: white;
+  border: 1px solid rgb(34, 55, 34);
+  box-shadow: 3px 3px 10px rgb(34, 55, 34);
 }

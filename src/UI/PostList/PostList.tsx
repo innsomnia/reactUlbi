@@ -8,7 +8,6 @@ interface PostListProps {
 
 export const PostList = memo(({ posts }: PostListProps) => {
   const [message, setMessage] = useState('')
-  console.log(posts, 'посты в постлисте')
 
   useEffect(() => {
     if (posts.length === 0) {

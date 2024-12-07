@@ -11,6 +11,12 @@ const postService = async (page = 0) => {
   return response.data
 }
 
+const getPageById = async (id: number) => {
+  const response = await axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
+
+  return
+}
+
 export const UsePosts = () => {
   const [page, setPage] = useState(0)
   const {

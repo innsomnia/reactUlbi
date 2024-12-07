@@ -4,6 +4,7 @@ import { About } from './Pages/About'
 import { HomePage } from './Pages/HomePage'
 import styles from './App.module.scss'
 import { NavBar } from './UI/NavBar/NavBar'
+import { PostPage } from './Pages/PostPage'
 
 export const App = () => {
   return (
@@ -13,6 +14,7 @@ export const App = () => {
         <Route path='/' element={<HomePage />} />
         <Route path='/about' element={<About />} />
         <Route path='/posts' element={<Posts />} />
+        <Route path='/posts/:id' element={<PostPage />} />
         <Route path='*' element={<Navigate to={'/posts'} />} />
       </Routes>
     </div>

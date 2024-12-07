@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './NavBar.module.scss'
 
-// const getLinkStyles = ({ isActive }: StylesLinkType, styles: Record<string, string>) => {
-//   return isActive ? `${styles.link} ${styles.active}` : styles.link
-// }
-
 export const NavBar = () => {
   return (
     <nav className={styles.navBar}>
