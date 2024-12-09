@@ -29,8 +29,7 @@
   background-color: rgb(224, 237, 224);
 }
 
-.openBtn,
-.deleteBtn {
+.postBtn {
   padding: 5px;
   border: 1px solid rgb(94, 137, 94);
   border-radius: 5px;
@@ -40,8 +39,7 @@
   transition: all 0.15s ease-in-out;
 }
 
-.openBtn:hover,
-.deleteBtn:hover {
+.postBtn:hover {
   background-color: rgb(94, 137, 94);
   color: white;
   border: 1px solid rgb(34, 55, 34);

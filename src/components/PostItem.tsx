@@ -5,12 +5,12 @@ import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 interface PostItemProps {
-  post: Post
+  props: Post
 }
 
-export const PostItem = ({ post }: PostItemProps) => {
+export const PostItem = ({ props }: PostItemProps) => {
   const { removePost } = useContext(ContextForPosts)
-  const { id, title, body } = post
+  const { id, title, body } = props
 
   const navigate = useNavigate()
   return (
@@ -18,17 +18,17 @@ export const PostItem = ({ post }: PostItemProps) => {
       <div className={styles.postText}>
         <div className={styles.postBox}>
           <h2>
-            {post.id}. {title}
+            {id}. {title}
           </h2>
           <p>{body}</p>
         </div>
       </div>
 
       <div className={styles.buttonGroup}>
-        <button onClick={() => navigate(`/posts/${id}`)} className={styles.openBtn}>
+        <button onClick={() => navigate(`/posts/${id}`)} className={styles.postBtn}>
           Открыть
         </button>
-        <button onClick={() => removePost(post.id)} className={styles.deleteBtn}>
+        <button onClick={() => removePost(id)} className={styles.postBtn}>
           Удалить
         </button>
       </div>

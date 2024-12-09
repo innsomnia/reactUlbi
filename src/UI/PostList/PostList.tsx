@@ -12,7 +12,7 @@ export const PostList = memo(({ posts }: PostListProps) => {
       {posts.length > 0 ? (
         <div>
           {posts.map((post) => (
-            <PostItem key={post.id} post={post} />
+            <PostItem key={post.id} props={post} />
           ))}
         </div>
       ) : (

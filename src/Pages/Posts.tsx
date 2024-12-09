@@ -6,9 +6,7 @@ import { PostFilter } from '../UI/PostFilter/PostFilter'
 import { PostList } from '../UI/PostList/PostList'
 import { PostForm } from '../UI/PostForm/PostForm'
 import { UsePosts } from '../Hooks/UsePosts'
-import { isError } from 'util'
 import { Loader } from '../UI/Loader/Loader'
-import { NotFound } from './NotFound/NotFound'
 
 interface ContextType {
   removePost: (id: number) => void
@@ -24,8 +22,6 @@ export const Posts = () => {
   const [selectedSort, setSelectedSort] = useState('')
   const [searchPosts, setSearchPosts] = useState(posts || [])
   const [modal, setModal] = useState(false)
-
-  console.log(page, 'номер страницы')
 
   useEffect(() => {
     if (posts) {

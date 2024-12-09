@@ -1,7 +1,24 @@
 import { useParams } from 'react-router-dom'
+import { UsePostById } from '../Hooks/UsePostById'
+import styles from '../components/PostItem.module.scss'
 
 export const PostPage = () => {
-  const params = useParams()
+  const { id } = useParams()
 
-  return <h1>Страница поста: {params.id}</h1>
+  const changedTypeOfId = Number(id)
+
+  const { data: post } = UsePostById(changedTypeOfId)
+
+  return (
+    <div className={styles.postContainer}>
+      <div className={styles.postText}>
+        <div className={styles.postBox}>
+          <h2>
+            {id}. {post?.title}
+          </h2>
+          <p>{post?.body}</p>
+        </div>
+      </div>
+    </div>
+  )
 }
