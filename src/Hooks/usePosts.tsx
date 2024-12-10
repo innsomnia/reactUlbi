@@ -8,7 +8,5 @@ export const usePosts = (page: number) => {
     retry: false,
   })
 
-  console.log(query, 'query')
-
   return { ...query, data: query.data?.data, totalLimit: query.data?.totalLimit }
 }
