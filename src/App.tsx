@@ -4,7 +4,7 @@ import { About } from './Pages/About'
 import { HomePage } from './Pages/HomePage'
 import styles from './App.module.scss'
 import { NavBar } from './UI/NavBar/NavBar'
-import { PostPage } from './Pages/PostPage'
+import { PostPage } from './Pages/PostPage/PostPage'
 import { NotFound } from './Pages/NotFound/NotFound'
 
 export const App = () => {

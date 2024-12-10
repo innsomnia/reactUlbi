@@ -1,7 +1,8 @@
 import axios from 'axios'
+import { Post } from '../typeModules/modules'
 
-export const GetPostById = async (id: number) => {
-  const response = await axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
+export const getPostById = async (id: string) => {
+  const response = await axios.get<Post>(`https://jsonplaceholder.typicode.com/posts/${id}`)
 
   return response.data
 }

@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
-import { GetPostById } from '../utils/GetPostById'
+import { getPostById } from '../utils/getPostById'
 
-export const UsePostById = (id: number) => {
-  const query = useQuery({ queryKey: ['post'], queryFn: () => GetPostById(id), retry: false })
+export const usePostById = (id: string) => {
+  const query = useQuery({ queryKey: ['post'], queryFn: () => getPostById(id), retry: false })
 
   return query
 }

@@ -1,12 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
-import { PostsService } from '../utils/PostsService'
+import { postsService } from '../utils/postsService'
 
-export const UsePosts = (page: number) => {
+export const usePosts = (page: number) => {
   const query = useQuery({
     queryKey: ['posts', page],
-    queryFn: () => PostsService(page),
+    queryFn: () => postsService(page),
     retry: false,
   })
 
-  return query
+  console.log(query, 'query')
+
+  return { ...query, data: query.data?.data, totalLimit: query.data?.totalLimit }
 }

@@ -37,11 +37,11 @@
   cursor: pointer;
   background-color: rgb(255, 255, 255);
   transition: all 0.15s ease-in-out;
-}
 
-.postBtn:hover {
-  background-color: rgb(94, 137, 94);
-  color: white;
-  border: 1px solid rgb(34, 55, 34);
-  box-shadow: 3px 3px 10px rgb(34, 55, 34);
+  &:hover {
+    background-color: rgb(94, 137, 94);
+    color: white;
+    border: 1px solid rgb(34, 55, 34);
+    box-shadow: 3px 3px 10px rgb(34, 55, 34);
+  }
 }

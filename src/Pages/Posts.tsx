@@ -5,7 +5,7 @@ import { MyModal } from '../UI/Modal/Modal'
 import { PostFilter } from '../UI/PostFilter/PostFilter'
 import { PostList } from '../UI/PostList/PostList'
 import { PostForm } from '../UI/PostForm/PostForm'
-import { UsePosts } from '../Hooks/UsePosts'
+import { usePosts } from '../hooks/usePosts'
 import { Loader } from '../UI/Loader/Loader'
 
 interface ContextType {
@@ -18,7 +18,7 @@ export const ContextForPosts = createContext<ContextType>({
 
 export const Posts = () => {
   const [page, setPage] = useState(0)
-  const { data: posts, isLoading } = UsePosts(page)
+  const { data: posts, isLoading } = usePosts(page)
   const [selectedSort, setSelectedSort] = useState('')
   const [searchPosts, setSearchPosts] = useState(posts || [])
   const [modal, setModal] = useState(false)
@@ -93,7 +93,7 @@ export const Posts = () => {
       </div>
 
       <ContextForPosts.Provider value={{ removePost }}>
-        {isLoading ? <Loader /> : <PostList posts={searchPosts} />}
+        {isLoading ? <Loader /> : <PostList searchPosts={searchPosts} />}
       </ContextForPosts.Provider>
     </div>
   )

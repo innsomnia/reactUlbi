@@ -3,16 +3,16 @@ import { Post } from '../../typeModules/modules'
 import { memo } from 'react'
 
 interface PostListProps {
-  posts: Post[]
+  searchPosts: Post[]
 }
 
-export const PostList = memo(({ posts }: PostListProps) => {
+export const PostList = memo(({ searchPosts }: PostListProps) => {
   return (
     <div>
-      {posts.length > 0 ? (
+      {searchPosts.length > 0 ? (
         <div>
-          {posts.map((post) => (
-            <PostItem key={post.id} props={post} />
+          {searchPosts.map((post) => (
+            <PostItem key={post.id} post={post} />
           ))}
         </div>
       ) : (

@@ -1,0 +1,17 @@
+.container {
+  margin: 15px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: start;
+  padding: 15px;
+  border: 2px solid rgb(94, 137, 94);
+  border-radius: 20px;
+  background-color: rgb(224, 237, 224);
+  box-shadow: 5px 5px 20px rgb(186, 216, 186);
+  transition: all 0.13s ease-in-out;
+
+  &:hover {
+    box-shadow: 5px 5px 20px rgb(34, 55, 34);
+  }
+}
