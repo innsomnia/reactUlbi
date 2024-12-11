@@ -4,6 +4,14 @@ export interface Post {
   body: string
 }
 
+export interface IPostComment {
+  postId: number
+  id: number
+  name: string
+  email: string
+  body: string
+}
+
 export interface Option {
   value: string
   name: string
