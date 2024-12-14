@@ -19,7 +19,6 @@ export interface Option {
 
 export interface PostFormProps {
   addNewPost: (newPost: Post) => void
-  setModal: () => void
 }
 
 export type EventCreatePost = (e: React.MouseEvent<HTMLButtonElement>) => void

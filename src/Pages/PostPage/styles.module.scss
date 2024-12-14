@@ -18,3 +18,22 @@
 .commentBox {
   margin-top: 15px;
 }
+
+.openBtn {
+  display: flex;
+  margin-top: 15px;
+  padding: 5px;
+  border: 1px solid rgb(94, 137, 94);
+  border-radius: 5px;
+  width: 100px;
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    background-color: rgb(94, 137, 94);
+    color: white;
+    border: 1px solid rgb(34, 55, 34);
+    box-shadow: 3px 3px 10px rgb(34, 55, 34);
+  }
+}

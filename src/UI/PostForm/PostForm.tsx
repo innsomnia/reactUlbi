@@ -5,7 +5,7 @@ import { memo, useCallback } from 'react'
 
 import styles from './PostForm.module.scss'
 
-export const PostForm = memo(({ addNewPost, setModal }: PostFormProps) => {
+export const PostForm = memo(({ addNewPost }: PostFormProps) => {
   const [title, setPostTitle] = useState('')
   const [body, setPostBody] = useState('')
 
@@ -35,9 +35,6 @@ export const PostForm = memo(({ addNewPost, setModal }: PostFormProps) => {
         <MyInput value={body} onChange={handleBodyChange} type='text' placeholder='Введи описание...' />
         <button onClick={handlePostCreation} className={styles.createBtn}>
           Создать
-        </button>
-        <button className={styles.closeModalBtn} onClick={setModal}>
-          Закрыть
         </button>
       </form>
     </div>

@@ -21,7 +21,7 @@ export const Posts = () => {
   const { data: posts, isLoading } = usePosts(page)
   const [selectedSort, setSelectedSort] = useState('')
   const [searchPosts, setSearchPosts] = useState(posts || [])
-  const [modal, setModal] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
     if (posts) {
@@ -31,7 +31,7 @@ export const Posts = () => {
 
   const addNewPost = useCallback((newPost: Post) => {
     setSearchPosts((prev) => [...prev, newPost])
-    setModal(false)
+    setIsOpen(false)
   }, [])
 
   const removePost = useCallback((id: number) => {
@@ -70,14 +70,16 @@ export const Posts = () => {
     <div className={styles.appContainer}>
       <h1>Мои посты</h1>
 
-      <button className={styles.createBtn} onClick={() => setModal(true)}>
+      <button className={styles.createBtn} onClick={() => setIsOpen(true)}>
         Создать пост
       </button>
-      {modal && (
-        <MyModal>
-          <PostForm setModal={() => setModal(false)} addNewPost={addNewPost} />
+
+      {isOpen && (
+        <MyModal onClose={() => setIsOpen(false)}>
+          <PostForm addNewPost={addNewPost} />
         </MyModal>
       )}
+
       <hr className={styles.line} />
 
       <PostFilter selectedSort={selectedSort} sortPosts={sortPosts} onSearch={onSearch} />

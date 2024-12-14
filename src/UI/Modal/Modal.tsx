@@ -1,15 +1,25 @@
 import { ReactNode } from 'react'
+import ReactDOM from 'react-dom'
 import styles from './Modal.module.scss'
 
 interface childrenType {
   children: ReactNode
+
+  onClose: () => void
 }
 
-export const MyModal = ({ children }: childrenType) => {
-  const modalStyles = `${styles.modalBackground} ${styles.active}`
-  return (
-    <div className={modalStyles}>
-      <div className={styles.modalContent}>{children}</div>
-    </div>
+export const MyModal = ({ onClose, children }: childrenType) => {
+  const portalRoot = document.getElementById('portal-root') as HTMLElement
+
+  return ReactDOM.createPortal(
+    <div className={styles.overlay}>
+      <div className={styles.modalContent}>
+        <div>{children}</div>
+        <button className={styles.modalBtn} onClick={onClose}>
+          Закрыть
+        </button>
+      </div>
+    </div>,
+    portalRoot
   )
 }
