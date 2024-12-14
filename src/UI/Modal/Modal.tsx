@@ -4,7 +4,6 @@ import styles from './Modal.module.scss'
 
 interface childrenType {
   children: ReactNode
-
   onClose: () => void
 }
 
