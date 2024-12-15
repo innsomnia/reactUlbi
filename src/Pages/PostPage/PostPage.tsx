@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { usePostById } from '../../hooks/usePostById'
 import styles from './styles.module.scss'
 import { usePostComments } from '../../hooks/usePostComments'
@@ -24,9 +24,9 @@ export const PostPage = () => {
         <button className={styles.openBtn} onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? 'Закрыть комментарии' : 'Открыть комментарии'}
         </button>
-        <button className={styles.backBtn} onClick={() => navigate(-1)}>
-          Назад
-        </button>
+        <Link to={'/posts'}>
+          <button className={styles.backBtn}>Назад</button>{' '}
+        </Link>
       </div>
 
       {isOpen && (
