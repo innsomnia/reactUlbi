@@ -1,4 +1,5 @@
 import { IPostComment } from '../../typeModules/modules'
+import styles from './styles.module.scss'
 
 interface ICommentProps {
   key: number
@@ -7,10 +8,11 @@ interface ICommentProps {
 
 export const CommentItem = ({ comment }: ICommentProps) => {
   return (
-    <>
-      <h2>{comment.name}</h2>
-      <p>{comment.email}</p>
-      <p>{comment.body}</p>
-    </>
+    <div>
+      <div className={styles.comment}>
+        <h2>{comment.email}</h2>
+        <p>{comment.body}</p>
+      </div>
+    </div>
   )
 }

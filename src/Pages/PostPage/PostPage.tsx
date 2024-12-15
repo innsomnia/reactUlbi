@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { usePostById } from '../../hooks/usePostById'
 import styles from './styles.module.scss'
 import { usePostComments } from '../../hooks/usePostComments'
@@ -11,7 +11,6 @@ export const PostPage = () => {
   const { data: post } = usePostById(id as string)
   const { data: comments } = usePostComments(id as string)
   const [isOpen, setIsOpen] = useState(false)
-  const navigate = useNavigate()
 
   return (
     <div className={styles.container}>
