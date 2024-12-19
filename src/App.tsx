@@ -1,17 +1,18 @@
-import { Route, Routes } from 'react-router-dom'
-import styles from './App.module.scss'
-import { NavBar } from './UI/NavBar/NavBar'
-import { routes } from './routes/routes'
+import { AuthContext, ModalContext } from './context/context'
+import { useState } from 'react'
+import { AppRoutes } from './UI/AppRoutes/AppRoutes'
 
 export const App = () => {
+  const [isAuth, setIsAuth] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <div className={styles.mainInfo}>
-      <NavBar />
-      <Routes>
-        {routes.map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-        ))}
-      </Routes>
-    </div>
+    <>
+      <AuthContext.Provider value={{ isAuth, setIsAuth }}>
+        <ModalContext.Provider value={{ isOpen, setIsOpen }}>
+          <AppRoutes />
+        </ModalContext.Provider>
+      </AuthContext.Provider>
+    </>
   )
 }

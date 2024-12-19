@@ -11,8 +11,8 @@ export const MyModal = ({ onClose, children }: childrenType) => {
   const portalRoot = document.getElementById('portal-root') as HTMLElement
 
   return ReactDOM.createPortal(
-    <div className={styles.overlay}>
-      <div className={styles.modalContent}>
+    <div onClick={onClose} className={styles.overlay}>
+      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div>{children}</div>
         <button className={styles.modalBtn} onClick={onClose}>
           Закрыть

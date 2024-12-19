@@ -1,3 +1,5 @@
+import React, { SetStateAction } from 'react'
+
 export interface Post {
   id: number
   title: string
@@ -22,3 +24,13 @@ export interface PostFormProps {
 }
 
 export type EventCreatePost = (e: React.MouseEvent<HTMLButtonElement>) => void
+
+export interface IAuthTypes {
+  isAuth: boolean
+  setIsAuth: React.Dispatch<SetStateAction<boolean>>
+}
+
+export interface IModalTypes {
+  isOpen: boolean
+  setIsOpen: React.Dispatch<SetStateAction<boolean>>
+}
