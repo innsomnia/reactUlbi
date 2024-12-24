@@ -14,15 +14,20 @@ export const LoginPage = () => {
   }
 
   return (
-    <div>
+    <div className={styles.loginContainer}>
       <h1>Авторизация:</h1>
       <div className={styles.inputsContainer}>
         <MyInput type='' placeholder='Логин...' />
         <MyInput type='' placeholder='Пароль...' />
       </div>
-      <button className={styles.btn} onClick={() => authConfirmFnc()}>
-        Войти
-      </button>
+      <div className={styles.btnContainer}>
+        <button className={styles.btn} onClick={() => navigate(-1)}>
+          Отмена
+        </button>
+        <button className={styles.btn} onClick={() => authConfirmFnc()}>
+          Войти
+        </button>
+      </div>
     </div>
   )
 }

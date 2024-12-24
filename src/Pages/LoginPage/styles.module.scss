@@ -1,9 +1,16 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
 .inputsContainer {
-  display: start;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 15px;
-  margin-left: -10px;
 }
 
 .btn {
@@ -11,6 +18,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 15px;
+  margin-left: 15px;
   padding: 7px;
   border: 1px solid rgb(94, 137, 94);
   border-radius: 5px;
@@ -25,4 +33,10 @@
     border: 1px solid rgb(34, 55, 34);
     box-shadow: 3px 3px 10px rgb(34, 55, 34);
   }
+}
+
+.btnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
