@@ -9,7 +9,7 @@ export const NotFound = () => {
     <div>
       <div className={styles.errorContainer}>
         <h3>Страница не найдена</h3>
-        <button className={styles.backBtn} onClick={() => navigate(-1)}>
+        <button className={styles.backBtn} onClick={() => navigate('/posts')}>
           Назад
         </button>
       </div>

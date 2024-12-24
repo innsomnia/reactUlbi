@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { usePostById } from '../../hooks/usePostById'
 import styles from './styles.module.scss'
 import { usePostComments } from '../../hooks/usePostComments'
@@ -13,6 +13,8 @@ export const PostPage = () => {
   const { data: comments } = usePostComments(id as string)
   const { isOpen, setIsOpen } = useContext(ModalContext)
 
+  const navigate = useNavigate()
+
   return (
     <div className={styles.container}>
       <>
@@ -24,9 +26,9 @@ export const PostPage = () => {
           <button className={styles.openBtn} onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? 'Закрыть комментарии' : 'Открыть комментарии'}
           </button>
-          <Link to={'/posts'}>
-            <button className={styles.backBtn}>Назад</button>{' '}
-          </Link>
+          <button onClick={() => navigate('/posts')} className={styles.backBtn}>
+            Назад
+          </button>
         </div>
         {isOpen && (
           <MyModal onClose={() => setIsOpen(false)}>
